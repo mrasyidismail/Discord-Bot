@@ -1,0 +1,17 @@
+{
+    "discord": {
+        "token": "your-discord-bot-token",
+        "clientID": "your-discord-bot-id",
+        "ownerID": "your-discord-id",
+        "publicKey": "your-application-public-key (optional)",
+        "secret": "your-client-secret (optional)"
+    },
+    "Character_AI": {
+        "TOKEN": "your-character-ai-token",
+        "ID": "character-ai-id",
+        "chatMode": {
+            "type": "mention/channel/hybrid",
+            "channelId": "channel-id (if channel/hybrid mode)"
+        }
+    }
+}
