@@ -1,0 +1,35 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "A cool discord bot !",
+  "main": "index.js",
+  "scripts": {
+    "start": "chcp 65001 && node src/index.js | npx pino-pretty",
+    "dev": "chcp 65001 && node-dev --respawn --trace-warnings --timestamp --notify=false src/index.js | npx pino-pretty"
+  },
+  "keywords": [
+    "discord-bot",
+    "javascript",
+    "discordjs"
+  ],
+  "author": "mrasyidismail",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.13.0",
+    "node_characterai": "^1.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "node-dev": "^8.0.0",
+    "pino": "^8.15.1",
+    "pino-pretty": "^10.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrasyidismail/Discord-Bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrasyidismail/Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/mrasyidismail/Discord-Bot#readme"
+}
