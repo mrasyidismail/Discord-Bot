@@ -91,13 +91,27 @@ To change chat mode, modify your `config.json`. There are 3 modes: `mention`, `c
 2. Channel Mode
     ![channel-mode](./img/channel-mode.png)
 
-    In this mode, the bot will reply on specific channel. Make sure you set the `config.json`'s `chatMode` and change the `channelId` field to a correct channel id* where the bot have permission to `send message` there.
+    In this mode, the bot will reply on specific channel. Make sure you set the `config.json`'s `chatMode` and change the `channelId` field to a correct channel id* where the bot have permission to `send message` and `read message` there.
 
     *If you don't know how to get a channel id, please click [here](#frequently-asked-question).
 
 3. Hybrid Mode
 
     In this mode, the bot will reply either by mentioned, replied or in a specific channel. **Don't forget to set the channel id !**
+
+4. Template
+
+    Creates a template whenever the user send a message. You can enable this feature by setting `template` to `true` in `config.json`. And modify the template in `src/request.js` at line 12.
+
+    - If enabled (`true`):
+    ![img](./img/template-mode-on.png)
+
+    - If disabled (`false`) :
+    ![img](./img/template-mode-off.png)
+
+    The Ai will see the message like this*
+
+    *Do note that the message response will be different depends on the Ai Character's personality.
 
 ## Credits
 

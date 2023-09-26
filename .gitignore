@@ -143,5 +143,8 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 
+# tests
+*test*
+
 # Configuration
 config.json

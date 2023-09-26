@@ -1,5 +1,6 @@
 const { Events, ActivityType } = require('discord.js');
-const { Character_AI, discord } = require('../../config.json');
+const { Talk } = require('../../modules/request');
+const { Character_AI } = require('../../config.json');
 const logger = require('../../modules/logger');
 const CharacterAI = require('node_characterai');
 const characterAI = new CharacterAI();
@@ -80,7 +81,7 @@ module.exports = {
                 case 'mention':
                     if (message.mentions?.repliedUser?.id == client.user.id) return await Talk(text, message, client);
                     if (text.startsWith(!client.user.toString())) return;
-                    await Talk(text, message, client);
+                    await Talk(text, message, client, characterAI);
                     break;
                 case 'channel':
                     if (message.channelId != Character_AI.chatMode.channelId) {
@@ -89,10 +90,10 @@ module.exports = {
                         }, 'Character AI chatMode channel id is not set or is invalid!\nCurrent config:');
                         return;
                     }
-                    await Talk(text, message, client);
+                    await Talk(text, message, client, characterAI);
                     break;
                 case 'hybrid':
-                    if (message.mentions?.repliedUser?.id == client.user.id || message.channelId == Character_AI.chatMode.channelId || text.startsWith(client.user.toString())) return await Talk(text, message, client);
+                    if (message.mentions?.repliedUser?.id == client.user.id || message.channelId == Character_AI.chatMode.channelId || text.startsWith(client.user.toString())) return await Talk(text, message, client, characterAI);
                     break;
                 default:
                     logger.warn({
@@ -103,25 +104,3 @@ module.exports = {
         });
     },
 };
-
-async function Talk(text, message, client) {
-    await message.channel.sendTyping();
-
-    if (text.startsWith(client.user.toString())) text = text.substring(client.user.toString().length).trim();
-
-    let template = `(OOC: This message was sent by ${message.author.globalName || message.author.username})\n\nMessage: ${text}\n\n(OOC: If the message is empty, you can act like it's an empty message)`;
-    if (message.author.id == discord.ownerID) template = text;
-
-    const chat = await characterAI.createOrContinueChat(Character_AI.ID);
-    const response = await chat.sendAndAwaitResponse(template, true);
-
-    try {
-        await message.reply(response.text);
-    }
-    catch (e) {
-        logger.error({
-            e,
-        }, 'Character AI ERROR');
-    }
-
-}
