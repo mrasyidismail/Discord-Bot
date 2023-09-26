@@ -79,7 +79,7 @@ module.exports = {
 
             switch (Character_AI.chatMode.type) {
                 case 'mention':
-                    if (message.mentions?.repliedUser?.id == client.user.id) return await Talk(text, message, client);
+                    if (message.mentions?.repliedUser?.id == client.user.id) return await Talk(text, message, client, characterAI);
                     if (text.startsWith(!client.user.toString())) return;
                     await Talk(text, message, client, characterAI);
                     break;
