@@ -3,7 +3,7 @@ const logger = require('./logger');
 
 module.exports = {
     Talk: async function(text, message, client, characterAI) {
-
+        if (Character_AI.chatMode.enabled === false) return;
         if (text.startsWith(client.user.toString())) text = text.substring(client.user.toString().length).trim();
         let template;
         switch (Character_AI.chatMode.template) {

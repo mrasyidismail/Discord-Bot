@@ -10,6 +10,7 @@
         "TOKEN": "your-character-ai-token",
         "ID": "character-ai-id",
         "chatMode": {
+            "enabled": true,
             "template": true,
             "type": "mention/channel/hybrid",
             "channelId": "channel-id (if channel/hybrid mode)"

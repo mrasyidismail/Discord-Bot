@@ -8,21 +8,30 @@ const characterAI = new CharacterAI();
 module.exports = {
     name: Events.ClientReady,
     async execute(client) {
-        /**
-         * Use guest if you don't want to authenticate
-         * await characterAI.authenticateAsGuest();
-         */
-        await characterAI.authenticateWithToken(Character_AI.TOKEN);
 
         logger.info({
             client: {
                 user: client.user.tag,
+                users: client.guilds.cache.reduce((a, g) => a + g.memberCount, 0),
                 guilds: client.guilds.cache.map(e => ({
                     name: e.name,
                     members: e.memberCount,
                 })),
             },
         }, 'Client Ready');
+
+        if (Character_AI.chatMode.enabled != false) {
+            /**
+             * Use guest if you don't want to authenticate
+             * await characterAI.authenticateAsGuest();
+             */
+            await characterAI.authenticateWithToken(Character_AI.TOKEN);
+        }
+        else {
+            logger.warn({
+                chatMode: Character_AI.chatMode,
+            }, 'Character AI is disabled!\nIf you want to enable it, set enabled to true in config.json. Current config:');
+        }
 
         setInterval(async () => {
             await client.user.setPresence({
@@ -53,7 +62,7 @@ module.exports = {
                         url: e.url,
                     })) || [],
                 }, 'MessageCreate (DM)');
-                return await Talk(text, message, client);
+                return await Talk(text, message, client, characterAI);
             }
 
             logger.info({
