@@ -4,7 +4,7 @@ Simple Ai Interactive Discord bot, using Character AI Unofficial API
 
 ## Requirements
 
-- [node.js](https://nodejs.org/en/download) Latest LTS Version*: 18.17.1 (includes npm 9.6.7)
+- [node.js](https://nodejs.org/en/download) Latest LTS Version*
 - Windows OS
 
 *Recommended
