@@ -16,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.13.0",
-    "node_characterai": "^1.2.0"
+    "node_characterai": "^1.2.1"
   },
   "devDependencies": {
     "eslint": "^8.50.0",
