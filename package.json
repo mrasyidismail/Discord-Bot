@@ -19,7 +19,7 @@
     "node_characterai": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^8.50.0",
+    "eslint": "^8.51.0",
     "node-dev": "^8.0.0",
     "pino": "^8.15.1",
     "pino-pretty": "^10.2.0"
