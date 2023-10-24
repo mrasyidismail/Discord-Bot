@@ -1,4 +1,6 @@
-# Discord AI ChatBot
+# Project Discontinued
+
+## Discord AI ChatBot
 
 Simple Ai Interactive Discord bot, using Character AI Unofficial API
 
